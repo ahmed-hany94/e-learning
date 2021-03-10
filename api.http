@@ -1,0 +1,86 @@
+@studentToken = Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNDg3NTQ2YzFkYzExMzY3NDg4MDI1MSIsInVzZXJuYW1lIjoiamFjb2IiLCJleHAiOjE2MjA1NDUzNTAsImlhdCI6MTYxNTM2MTM1MH0.52fOaBLciTVp9awLot-TooVO_d4cqzKgJ_N_5hfbFFo
+@teacherToken = Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNDg3NTU3YzFkYzExMzY3NDg4MDI1MiIsInVzZXJuYW1lIjoiamFjayIsImV4cCI6MTYyMDU0NTM2NywiaWF0IjoxNjE1MzYxMzY3fQ.UJBa0nwT_PZGP1P1CCqqW-8QyHaBvMwkXKgR2zlqmM8
+
+####################################################################
+
+#  student sign up
+POST http://localhost:3000/api/register
+Content-Type: application/json
+
+{
+  "username": "Jacob",
+  "email": "jake@jake.jake",
+  "password": "jakejake",
+  "role": "STUDENT"
+}
+
+####################################################################  
+# teacher sign up
+POST http://localhost:3000/api/register
+Content-Type: application/json
+
+{
+  "username": "Jack",
+  "email": "jack@jack.jack",
+  "password": "jackjack",
+  "role": "TEACHER"
+}
+
+####################################################################  
+
+# student login
+POST http://localhost:3000/api/login
+Content-Type: application/json
+Authorization: {{studentToken}}
+
+{
+  "email": "jake@jake.jake",
+  "password": "jakejake"
+}
+
+####################################################################
+
+# teacher login
+POST http://localhost:3000/api/login
+Content-Type: application/json
+Authorization: {{teacherToken}}
+
+{
+  "email": "jack@jack.jack",
+  "password": "jackjack"
+}
+
+####################################################################
+
+# get user
+GET http://localhost:3000/api/user
+Content-Type: application/json
+Authorization: {{teacherToken}}
+
+####################################################################
+
+# teacher create course
+POST http://localhost:3000/api/course/create
+Content-Type: application/json
+Authorization: {{teacherToken}}
+
+{
+  "courseTitle": "programming-course"
+}
+
+####################################################################
+# student enroll in course
+POST http://localhost:3000/api/course/enroll
+Content-Type: application/json
+Authorization: {{studentToken}}
+
+{
+  "courseTitle": "programming-course"
+}
+
+####################################################################
+# get courses catalogue 
+GET http://localhost:3000/api/course
+Content-Type: application/json
+
+####################################################################
