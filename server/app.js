@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
-// const passport = require("passport");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 const url = "mongodb://127.0.0.1:27017/elearning";
 
@@ -8,12 +9,21 @@ const app = express();
 
 app.use(express.json());
 
+app.use(cookieParser());
+
+app.use(
+  cors({
+    // credentials: true,
+  })
+);
+
 mongoose.connect(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
   useCreateIndex: true,
 });
+
 const db = mongoose.connection;
 
 db.once("open", () => {
@@ -22,17 +32,10 @@ db.once("open", () => {
   console.log("db error", err);
 });
 
-// const Student = mongoose.model("Student");
-// const Teacher = mongoose.model("Teacher");
-require("./models/User");
-// require("./models/Teacher");
-// require("./models/Student");
+app.use("/", require("./routes/users.routes"));
+app.use("/", require("./routes/courses.routes"));
+// app.use("/", require("./routes/enrollments.routes"));
 
-require("./config/passport");
-
-app.use(require("./routes"));
-
-// course
-// app.get("/api/courses", (req, res) => {});
-
-app.listen("3000");
+app.listen("6969", () => {
+  console.log("listening on http://localhost:6969");
+});

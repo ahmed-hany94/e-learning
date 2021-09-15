@@ -1,0 +1,43 @@
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTQwMTAxM2YwN2FjODEyZDA0NzIxMGUiLCJpYXQiOjE2MzE2ODQ4Njh9.k1KPB4xXCt3R9iaI1DhZeEIOudiAWGYnCyrVpZSjURo
+
+####################################################################
+#  Sign Up
+POST http://localhost:6969/api/users
+Content-Type: application/json
+
+{
+  "username": "Jacob",
+  "email": "jake@jake.jake",
+  "password": "jakejake",
+  "isTeacher": false
+}
+
+####################################################################  
+# Login
+POST http://localhost:6969/api/auth
+Content-Type: application/json
+
+{
+  "email": "jake@jake.jake",
+  "password": "jakejake"
+}
+
+####################################################################
+
+# Get Current User
+GET http://localhost:6969/api/users/me
+Content-Type: application/json
+Authorization: {{token}}
+
+####################################################################
+# Get All User
+GET http://localhost:6969/api/users
+Content-Type: application/json
+
+####################################################################
+# Get User By ID
+GET http://localhost:6969/api/users/6124c1693649614c24b2d7b8
+Content-Type: application/json
+Authorization: {{token}}
+
+####################################################################
