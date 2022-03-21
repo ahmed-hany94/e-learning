@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { create } from "./api-user";
 
-export default function Register() {
+export default function Register(props) {
   const [userValues, setUserValues] = useState({
     username: "",
     email: "",
@@ -30,44 +30,62 @@ export default function Register() {
     });
   };
 
+  const { from } = props.location.state || {
+    from: {
+      pathname: "/login",
+    },
+  };
+
+  const { redirectToReferrer } = userValues;
+  if (redirectToReferrer) {
+    return <Redirect to={from} />;
+  }
+
   return (
     <main>
-      <form>
-        <section>
-          {/* <fieldset></fieldset> */}
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            name="username"
-            placeholder="Enter your username"
-            onChange={handleChange("username")}
-          ></input>
-        </section>
-
-        <section>
-          <label htmlFor="email">email:</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter you email"
-            onChange={handleChange("email")}
-          ></input>
-        </section>
-
-        <section>
-          <label htmlFor="password">password:</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter your password"
-            onChange={handleChange("password")}
-          ></input>
-        </section>
-
-        {/* <div class="submitsAndHiddens"></div> */}
-        <section>
-          <button onClick={clickSubmit}>Register</button>
-        </section>
+      <form method="post">
+        <fieldset>
+          <label>
+            Username
+            <br />
+            <input
+              name="username"
+              placeholder="Enter you username"
+              onChange={handleChange("username")}
+              required
+            />
+            <br />
+          </label>
+          <label>
+            E-mail
+            <br />
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter you email"
+              onChange={handleChange("email")}
+              required
+            />
+            <br />
+          </label>
+          <label>
+            Password
+            <br />
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter you password"
+              onChange={handleChange("password")}
+              required
+            />
+            <br />
+          </label>
+        </fieldset>
+        <footer>
+          <Link onClick={clickSubmit} to="/login">
+            Register
+          </Link>
+        </footer>
       </form>
     </main>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import "./index.css";
 
 // our modules
 import "./App.css";
@@ -14,17 +15,21 @@ import Login from "./components/auth/Login";
 
 //    user
 import Register from "./components/user/Register";
+import Profile from "./components/user/Profile";
+import EditProfile from "./components/user/EditProfile";
 
 const MainRouter = () => {
   return (
-    <div>
+    <>
       <Menu />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
+        <Route path="/user/edit/:userId" component={EditProfile} />
+        <Route path="/user/:userId" component={Profile} />
       </Switch>
-    </div>
+    </>
   );
 };
 

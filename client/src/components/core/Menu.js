@@ -4,40 +4,42 @@ import auth from "../auth/auth-utils";
 
 const Menu = withRouter(({ history }) => (
   <header>
-    <nav>
+    <h1>
       <Link to="/">E-learning</Link>
-    </nav>
-    <nav>
+    </h1>
+    <ul>
       {!auth.isauthenticated() && (
-        <ul>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
+        <nav className="nav-links">
+          <ul>
+            <li>
+              <Link to="/register">Register</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          </ul>
+        </nav>
       )}
       {auth.isauthenticated() && (
-        <ul>
-          <li>
-            <Link to={"/user/" + auth.isauthenticated().user._id}>
-              My Profile
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/logout"
-              onClick={() => {
-                auth.clearJWT(() => history.push("/"));
-              }}
-            >
-              Logout
-            </Link>
-          </li>
-        </ul>
+        <nav className="nav-links">
+          <ul>
+            <li>
+              <a to={"/user/" + auth.isauthenticated().user._id}>My Profile</a>
+            </li>
+            <li>
+              <a
+                to="/logout"
+                onClick={() => {
+                  auth.clearJWT(() => history.push("/"));
+                }}
+              >
+                Logout
+              </a>
+            </li>
+          </ul>
+        </nav>
       )}
-    </nav>
+    </ul>
   </header>
 ));
 

@@ -69,28 +69,40 @@ export default function Login(props) {
 
   return (
     <main>
-      <form>
-        <section>
-          <label>email:</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter you email"
-            onChange={handleChange("email")}
-          ></input>
-        </section>
-        <section>
-          <label>password:</label>
-          <input
-            type="password"
-            placeholder="Enter your password"
-            onChange={handleChange("password")}
-          ></input>
-        </section>
-        <section>
-          <button onClick={clickSubmit}>Login</button>
+      <form method="post">
+        <fieldset>
+          <label>
+            E-mail
+            <br />
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter you email"
+              onChange={handleChange("email")}
+              required
+            />
+            <br />
+          </label>
+          <label>
+            Password
+            <br />
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter you password"
+              onChange={handleChange("password")}
+              required
+            />
+            <br />
+          </label>
+        </fieldset>
+        <footer>
           <Link to="#">Forgot password?</Link>
-        </section>
+          <br />
+          <Link onClick={clickSubmit} to="/">
+            Login
+          </Link>
+        </footer>
       </form>
     </main>
   );

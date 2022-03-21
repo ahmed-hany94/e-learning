@@ -1,0 +1,187 @@
+/* Globals */
+
+:root {
+  --font-header: "Playfair Display", serif;
+  --font-flow: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+html,
+body,
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+form,
+fieldset,
+caption,
+table,
+tr,
+td,
+th,
+address,
+blockquote,
+img {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  flex: 1 0 auto;
+}
+
+img,
+fieldset {
+  border: none;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+button,
+input,
+table,
+textarea,
+select {
+  font: normal 1em/1.5 var(--font-flow);
+}
+
+pre,
+code,
+tt {
+  font: normal 1em/1.5em consolas, monospace;
+  word-break: break-word;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-header);
+}
+
+a:visited {
+  color: #000;
+}
+
+a:focus,
+a:hover {
+  color: #000;
+}
+
+p {
+  margin: 0.5em 0 1em;
+}
+
+/* header */
+h1 {
+  padding-left: 2rem;
+  margin-bottom: -2rem;
+}
+
+nav {
+  text-align: right;
+}
+
+nav ul li {
+  display: inline;
+  padding: 2rem;
+}
+
+/* main */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 72em;
+  padding: min(4em, 8vh) min(1.5em, 4vw);
+}
+
+main > header {
+  text-align: center;
+}
+
+/* Home */
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 2vw, 2rem);
+  padding: 0 clamp(0.5em, 2vw, 1em);
+  justify-content: center;
+}
+
+.cards article {
+  overflow: hidden;
+  flex-grow: 0;
+  width: 100%;
+  max-width: 16em;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.125em 0.125em #0004;
+}
+
+.cards article img {
+  width: 100%;
+  height: auto;
+}
+
+.actions {
+  padding: 0.5em;
+}
+
+.actions li {
+  display: inline;
+  padding: 0 2em;
+  margin-bottom: 0.5em;
+}
+
+.actions a {
+  color: #000;
+  text-decoration: none;
+  background-color: #685c5c;
+  color: white;
+  border-radius: 0.2rem;
+  padding: 0 0.05rem;
+}
+
+/* Register */
+form {
+  padding: min(4em, 8vh) min(1.5em, 4vw);
+}
+
+form footer {
+  text-align: center;
+  padding-top: 1rem;
+}
+
+/* Login */
+
+/* Edit Profile */
